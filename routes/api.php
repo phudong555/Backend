@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiThongbaoController;
 use App\Http\Controllers\ApiCongviecController;
-use App\Http\Controllers\ApiLoginController;
+use App\Http\Controllers\ApiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +25,12 @@ use App\Http\Controllers\ApiLoginController;
 Route::resource('thongbao', 'ApiThongbaoController');
 Route::resource('congviec', 'ApiCongviecController');
 
+//đăng nhập
+Route::post('login','ApiUserController@login');
 
-Route::post('dangnhap','ApiLoginController@login');
+// quên mật khẩu
+Route::post('checkUser','ApiUserController@checkEmailUser');
+Route::post('resetpassword/{id}','ApiUserController@resetPassword');
+
+//đổi mật khẩu
+Route::post('changepassword/{id}','ApiUserController@changePassword');
